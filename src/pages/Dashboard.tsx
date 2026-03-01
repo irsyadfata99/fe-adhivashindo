@@ -1,13 +1,11 @@
 import React from "react";
-import { IonPage, IonContent } from "@ionic/react";
+import { PageLayout } from "../components/Index";
 
 const Dashboard: React.FC = () => {
   return (
-    <IonPage>
-      <IonContent>
-        <h2>Dashboard</h2>
-      </IonContent>
-    </IonPage>
+    <PageLayout title="LEARNING MANAGEMENT SYSTEM">
+      {/* Content will be built here */}
+    </PageLayout>
   );
 };
 

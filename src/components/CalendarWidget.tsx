@@ -150,7 +150,8 @@ const CalendarWidget: React.FC = () => {
             }}
             onMouseEnter={(e) => {
               if (d && !isToday(d))
-                e.currentTarget.style.background = "#f1f5f9";
+                e.currentTarget.style.background =
+                  "var(--ion-background-color)";
             }}
             onMouseLeave={(e) => {
               if (d && !isToday(d))

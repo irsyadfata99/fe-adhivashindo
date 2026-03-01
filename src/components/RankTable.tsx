@@ -81,7 +81,7 @@ const RankTable: React.FC<RankTableProps> = ({
           }}
         >
           <thead>
-            <tr style={{ background: "#f8fafc" }}>
+            <tr style={{ background: "var(--ion-background-color)" }}>
               {["Rank", "Name", "Class", "Modul", "Point"].map((h) => (
                 <th
                   key={h}
@@ -107,7 +107,8 @@ const RankTable: React.FC<RankTableProps> = ({
                 key={p.rank}
                 style={{ borderBottom: "1px solid var(--border-color)" }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#f8fafc";
+                  e.currentTarget.style.background =
+                    "var(--ion-background-color)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";

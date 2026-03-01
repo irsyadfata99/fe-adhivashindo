@@ -5,7 +5,6 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// Otomatis attach token di setiap request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -19,8 +18,8 @@ export const registerAPI = (data: any) => api.post("/auth/register", data);
 export const loginAPI = (data: any) => api.post("/auth/login", data);
 
 // Content
-export const getContentsAPI = (page = 1, search = "") =>
-  api.get(`/contents?page=${page}&search=${search}`);
+export const getContentsAPI = (page = 1, limit = 10, search = "") =>
+  api.get(`/contents?page=${page}&limit=${limit}&search=${search}`);
 export const getContentByIdAPI = (id: number) => api.get(`/contents/${id}`);
 export const createContentAPI = (data: any) => api.post("/contents", data);
 export const updateContentAPI = (id: number, data: any) =>

@@ -14,6 +14,7 @@
   --ion-color-success: #22c55e;
   --ion-color-warning: #f59e0b;
   --ion-color-danger: #ef4444;
+  --ion-color-danger-shade: #dc2626;
 
   --ion-background-color: #f1f5f9;
   --ion-background-color-rgb: 241, 245, 249;
@@ -28,6 +29,7 @@
   --card-bg: #ffffff;
   --card-border-radius: 16px;
   --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
 
   --navbar-bg: #ffffff;
   --navbar-height: 64px;
@@ -97,7 +99,7 @@ ion-button {
 }
 
 ion-searchbar {
-  --background: #f1f5f9;
+  --background: var(--ion-background-color);
   --border-radius: 10px;
   --box-shadow: none;
   --placeholder-color: var(--text-muted);
@@ -228,7 +230,7 @@ ion-searchbar {
 
 .modul-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .modul-card.pemrograman {
@@ -270,7 +272,7 @@ ion-searchbar {
 }
 
 .table-container th {
-  background: #f8fafc;
+  background: var(--ion-background-color);
   color: var(--text-secondary);
   padding: 12px 16px;
   text-align: left;

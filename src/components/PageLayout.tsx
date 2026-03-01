@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
 interface PageLayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title?: string;
 }
 
@@ -14,28 +14,34 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => {
       <IonContent fullscreen>
         <div
           style={{
-            display: "flex",
             minHeight: "100vh",
             background: "var(--ion-background-color)",
           }}
         >
-          {/* Sidebar */}
-          <Sidebar />
-
-          {/* Main Content */}
+          {/* Navbar — sticky, full width */}
           <div
             style={{
-              marginLeft: "var(--sidebar-width)",
-              flex: 1,
-              padding: "var(--content-padding)",
-              minHeight: "100vh",
+              position: "sticky",
+              top: 0,
+              zIndex: 50,
             }}
           >
-            {/* Navbar */}
             <Navbar title={title} />
+          </div>
 
-            {/* Page Content */}
-            {children}
+          {/* Body — sidebar + content side by side below navbar */}
+          <div style={{ display: "flex" }}>
+            <Sidebar />
+            <div
+              style={{
+                marginLeft: "var(--sidebar-width)",
+                flex: 1,
+                padding: "var(--content-padding)",
+                minHeight: "calc(100vh - var(--navbar-height))",
+              }}
+            >
+              {children}
+            </div>
           </div>
         </div>
       </IonContent>

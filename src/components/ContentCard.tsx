@@ -41,7 +41,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
       onMouseEnter={(e) => {
         if (onClick) {
           e.currentTarget.style.transform = "translateY(-2px)";
-          e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.1)";
+          e.currentTarget.style.boxShadow =
+            "var(--card-shadow-hover, 0 6px 20px rgba(0,0,0,0.1))";
         }
       }}
       onMouseLeave={(e) => {

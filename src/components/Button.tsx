@@ -77,22 +77,22 @@ const Button: React.FC<ButtonProps> = ({
         ...styles[size],
         ...(isDisabled ? styles.disabled : {}),
         ...(fullWidth ? styles.fullWidth : {}),
-        ...style, // custom style override — harus paling bawah
+        ...style,
       }}
       onMouseEnter={(e) => {
         if (!isDisabled) {
           const el = e.currentTarget;
           if (variant === "primary")
             el.style.background = "var(--ion-color-primary-shade)";
-          if (variant === "danger") el.style.background = "#dc2626";
+          if (variant === "danger")
+            el.style.background = "var(--ion-color-danger-shade, #dc2626)";
           if (variant === "secondary" || variant === "ghost")
-            el.style.background = "#f1f5f9";
+            el.style.background = "var(--ion-background-color)";
         }
       }}
       onMouseLeave={(e) => {
         if (!isDisabled) {
           const el = e.currentTarget;
-          // Restore custom style background if provided, else fallback to variant default
           if (style?.background) {
             el.style.background = style.background as string;
           } else {
