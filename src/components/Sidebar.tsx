@@ -262,16 +262,11 @@ const Sidebar: React.FC = () => {
   return (
     <div
       style={{
-        width: "var(--sidebar-width)",
+        width: "100%",
         background: "var(--sidebar-bg)",
-        height: "calc(100vh - var(--navbar-height))",
-        position: "fixed",
-        left: 0,
-        top: "var(--navbar-height)",
+        minHeight: "100%",
         display: "flex",
         flexDirection: "column",
-        zIndex: 100,
-        overflowY: "auto",
         paddingTop: "8px",
         borderTopRightRadius: "24px",
       }}

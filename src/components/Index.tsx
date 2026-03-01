@@ -2,6 +2,7 @@ export { default as Button } from "./Button";
 export { default as Sidebar } from "./Sidebar";
 export { default as Navbar } from "./Navbar";
 export { default as PageLayout } from "./PageLayout";
+export { default as ProfilePanel } from "./ProfilePanel";
 export { default as ContentCard } from "./ContentCard";
 export { default as ModuleCard } from "./ModuleCard";
 export { default as HeroBanner } from "./HeroBanner";

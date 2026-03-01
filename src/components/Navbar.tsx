@@ -59,16 +59,15 @@ const Navbar: React.FC<NavbarProps> = ({
         display: "flex",
         alignItems: "center",
         padding: "0 28px",
-        borderBottom: "1px solid var(--border-color)",
-        gap: "24px",
+        gap: "16px",
       }}
     >
-      {/* Left - Logo */}
+      {/* Left — Logo + Title grouped together */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "8px",
+          gap: "10px",
           flexShrink: 0,
         }}
       >
@@ -85,19 +84,31 @@ const Navbar: React.FC<NavbarProps> = ({
         </span>
       </div>
 
-      {/* Center - Title */}
+      {/* Divider */}
+      <div
+        style={{
+          width: "1px",
+          height: "24px",
+          background: "var(--border-color)",
+          flexShrink: 0,
+        }}
+      />
+
+      {/* Title */}
       <span
         style={{
           fontWeight: "700",
           fontSize: "var(--font-size-sm)",
           color: "var(--text-secondary)",
           letterSpacing: "1.5px",
-          flex: 1,
-          textAlign: "center",
+          flexShrink: 0,
         }}
       >
         {title}
       </span>
+
+      {/* Spacer */}
+      <div style={{ flex: 1 }} />
 
       {/* Search */}
       <div
@@ -140,86 +151,70 @@ const Navbar: React.FC<NavbarProps> = ({
         />
       </div>
 
-      {/* Right - Icon actions */}
+      {/* Bell */}
       <div
         style={{
+          position: "relative",
+          cursor: "pointer",
+          width: "36px",
+          height: "36px",
           display: "flex",
           alignItems: "center",
-          gap: "8px",
-          flexShrink: 0,
+          justifyContent: "center",
+          borderRadius: "8px",
+          transition: "background 0.15s",
         }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.background = "var(--ion-background-color)")
+        }
+        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
       >
-        {/* Bell */}
+        <IconBell />
         <div
           style={{
-            width: "36px",
-            height: "36px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            borderRadius: "8px",
-            position: "relative",
-            transition: "background 0.15s",
+            position: "absolute",
+            top: "6px",
+            right: "6px",
+            width: "7px",
+            height: "7px",
+            background: "var(--ion-color-danger)",
+            borderRadius: "50%",
+            border: "1.5px solid white",
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "var(--ion-background-color)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "transparent")
-          }
-        >
-          <IconBell />
-          {/* red dot */}
-          <div
-            style={{
-              position: "absolute",
-              top: "6px",
-              right: "6px",
-              width: "7px",
-              height: "7px",
-              background: "var(--ion-color-danger)",
-              borderRadius: "50%",
-              border: "1.5px solid white",
-            }}
-          />
-        </div>
+        />
+      </div>
 
-        {/* Message */}
+      {/* Message */}
+      <div
+        style={{
+          position: "relative",
+          cursor: "pointer",
+          width: "36px",
+          height: "36px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "8px",
+          transition: "background 0.15s",
+        }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.background = "var(--ion-background-color)")
+        }
+        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+      >
+        <IconMessage />
         <div
           style={{
-            width: "36px",
-            height: "36px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            borderRadius: "8px",
-            position: "relative",
-            transition: "background 0.15s",
+            position: "absolute",
+            top: "6px",
+            right: "6px",
+            width: "7px",
+            height: "7px",
+            background: "var(--ion-color-danger)",
+            borderRadius: "50%",
+            border: "1.5px solid white",
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "var(--ion-background-color)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "transparent")
-          }
-        >
-          <IconMessage />
-          {/* red dot */}
-          <div
-            style={{
-              position: "absolute",
-              top: "6px",
-              right: "6px",
-              width: "7px",
-              height: "7px",
-              background: "var(--ion-color-danger)",
-              borderRadius: "50%",
-              border: "1.5px solid white",
-            }}
-          />
-        </div>
+        />
       </div>
     </div>
   );

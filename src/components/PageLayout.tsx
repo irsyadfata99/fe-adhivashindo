@@ -1,50 +1,98 @@
 import React from "react";
-import { IonPage, IonContent } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import ProfilePanel from "./ProfilePanel";
 
 interface PageLayoutProps {
   children?: React.ReactNode;
   title?: string;
+  showProfilePanel?: boolean;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => {
+const PROFILE_WIDTH = 304;
+
+const PageLayout: React.FC<PageLayoutProps> = ({
+  children,
+  title,
+  showProfilePanel = true,
+}) => {
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
+        {/* ── Left+Center block ── */}
         <div
           style={{
-            minHeight: "100vh",
-            background: "var(--ion-background-color)",
+            flex: 1,
+            minWidth: 0,
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
           }}
         >
-          {/* Navbar — sticky, full width */}
+          {/* Navbar — spans only left+center, not profile column */}
           <div
             style={{
-              position: "sticky",
-              top: 0,
-              zIndex: 50,
+              flexShrink: 0,
+              background: "var(--navbar-bg)",
+              borderBottom: "1px solid var(--border-color)",
+              zIndex: 100,
             }}
           >
             <Navbar title={title} />
           </div>
 
-          {/* Body — sidebar + content side by side below navbar */}
-          <div style={{ display: "flex" }}>
-            <Sidebar />
+          {/* Sidebar + Content row */}
+          <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+            {/* Sidebar */}
             <div
               style={{
-                marginLeft: "var(--sidebar-width)",
+                width: "var(--sidebar-width)",
+                flexShrink: 0,
+                overflowY: "auto",
+                overflowX: "hidden",
+                background: "var(--sidebar-bg)",
+                borderTopRightRadius: "24px",
+              }}
+            >
+              <Sidebar />
+            </div>
+
+            {/* Main scrollable content */}
+            <div
+              style={{
                 flex: 1,
+                minWidth: 0,
+                overflowY: "auto",
                 padding: "var(--content-padding)",
-                minHeight: "calc(100vh - var(--navbar-height))",
+                background: "var(--ion-background-color)",
               }}
             >
               {children}
             </div>
           </div>
         </div>
-      </IonContent>
+
+        {/* ── Right: Profile column — truly full height ── */}
+        {showProfilePanel && (
+          <div
+            style={{
+              width: `${PROFILE_WIDTH}px`,
+              flexShrink: 0,
+              height: "100vh",
+              overflowY: "auto",
+              overflowX: "hidden",
+              background: "var(--ion-background-color)",
+              borderLeft: "1px solid var(--border-color)",
+              padding: "20px 16px",
+              scrollbarWidth: "none",
+              boxSizing: "border-box",
+            }}
+          >
+            <ProfilePanel />
+          </div>
+        )}
+      </div>
     </IonPage>
   );
 };
