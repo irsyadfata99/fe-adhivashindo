@@ -5,103 +5,118 @@ type ModulVariant = "pemrograman" | "creative" | "sdm";
 interface ModulCardProps {
   variant?: ModulVariant;
   label: string;
-  title: string;
   items?: string[];
+  highlightIndex?: number;
   onClick?: () => void;
 }
 
 const variantColors: Record<ModulVariant, string> = {
-  pemrograman: "var(--modul-pemrograman)",
-  creative: "var(--modul-creative)",
-  sdm: "var(--modul-sdm)",
+  pemrograman: "#1e1b4b",
+  creative: "#f87171",
+  sdm: "#fbbf24",
 };
 
-const ModulCard: React.FC<ModulCardProps> = ({
-  variant = "pemrograman",
-  label,
-  title,
-  items = [],
-  onClick,
-}) => {
+const ModuleCard: React.FC<ModulCardProps> = ({ variant = "pemrograman", label, items = [], highlightIndex = 1, onClick }) => {
+  const bgColor = variantColors[variant];
+  const isDark = variant === "pemrograman";
+
   return (
     <div
       onClick={onClick}
       style={{
-        background: variantColors[variant],
-        borderRadius: "var(--border-radius-lg)",
-        padding: "20px",
-        color: "white",
-        minHeight: "180px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        flex: 1,
+        borderRadius: "16px",
+        overflow: "hidden",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
         cursor: onClick ? "pointer" : "default",
         transition: "transform 0.2s ease, box-shadow 0.2s ease",
-        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        background: "white",
       }}
       onMouseEnter={(e) => {
         if (onClick) {
-          e.currentTarget.style.transform = "translateY(-4px)";
-          e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.2)";
+          e.currentTarget.style.transform = "translateY(-3px)";
+          e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.13)";
         }
       }}
       onMouseLeave={(e) => {
         if (onClick) {
           e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "none";
+          e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.08)";
         }
       }}
     >
-      {/* Top */}
-      <div>
+      {/* ── Top: inner rounded card with margin ── */}
+      <div style={{ padding: "12px 12px 0 12px" }}>
+        <div
+          style={{
+            background: bgColor,
+            borderRadius: "12px",
+            height: "160px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          {/* Label */}
+          <span
+            style={{
+              fontSize: "16px",
+              fontWeight: "800",
+              color: "white",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              textAlign: "center",
+              padding: "0 16px",
+              position: "relative",
+              zIndex: 1,
+              textShadow: isDark ? "0 1px 4px rgba(0,0,0,0.4)" : "none",
+            }}
+          >
+            {label}
+          </span>
+        </div>
+      </div>
+
+      {/* ── Bottom: white content ── */}
+      <div style={{ padding: "16px 16px 20px", flex: 1 }}>
         <div
           style={{
             fontSize: "10px",
             fontWeight: "700",
-            letterSpacing: "1.5px",
+            letterSpacing: "1px",
             textTransform: "uppercase",
-            opacity: 0.85,
-            marginBottom: "8px",
+            color: "var(--ion-text-color)",
+            marginBottom: "12px",
           }}
         >
           MATERI KOMPETENSI
         </div>
-        <div
-          style={{
-            fontSize: "16px",
-            fontWeight: "700",
-            letterSpacing: "1px",
-            marginBottom: "12px",
-          }}
-        >
-          {label}
-        </div>
-      </div>
 
-      {/* Items */}
-      {items.length > 0 && (
-        <div style={{ fontSize: "12px", opacity: 0.9, lineHeight: "1.6" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           {items.map((item, i) => (
-            <div key={i} style={{ marginBottom: "4px" }}>
-              • {item}
+            <div
+              key={i}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.5",
+                padding: i === highlightIndex ? "6px 10px" : "5px 0",
+                borderRadius: i === highlightIndex ? "6px" : "0",
+                color: i === highlightIndex ? "#78350f" : "var(--text-secondary)",
+                background: i === highlightIndex ? "#fef08a" : "transparent",
+                fontWeight: i === highlightIndex ? "600" : "400",
+              }}
+            >
+              {item}
             </div>
           ))}
         </div>
-      )}
-
-      {/* Bottom title */}
-      <div
-        style={{
-          fontSize: "13px",
-          fontWeight: "600",
-          marginTop: "12px",
-          opacity: 0.95,
-        }}
-      >
-        {title}
       </div>
     </div>
   );
 };
 
-export default ModulCard;
+export default ModuleCard;

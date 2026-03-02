@@ -27,10 +27,7 @@ const rankEmoji = (rank: number) => {
   return rank;
 };
 
-const RankTable: React.FC<RankTableProps> = ({
-  data,
-  title = "Nilai Peserta",
-}) => {
+const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) => {
   return (
     <div
       style={{
@@ -50,36 +47,13 @@ const RankTable: React.FC<RankTableProps> = ({
           alignItems: "center",
         }}
       >
-        <h3
-          style={{
-            fontWeight: "700",
-            fontSize: "var(--font-size-md)",
-            color: "var(--ion-text-color)",
-          }}
-        >
-          {title}
-        </h3>
-        <span
-          style={{
-            fontSize: "var(--font-size-xs)",
-            color: "var(--ion-color-primary)",
-            fontWeight: "600",
-            cursor: "pointer",
-          }}
-        >
-          Lihat Semua →
-        </span>
+        <h3 style={{ fontWeight: "700", fontSize: "var(--font-size-md)", color: "var(--ion-text-color)" }}>{title}</h3>
+        <span style={{ fontSize: "var(--font-size-xs)", color: "var(--ion-color-primary)", fontWeight: "600", cursor: "pointer" }}>Lihat Semua →</span>
       </div>
 
       {/* Table */}
       <div style={{ overflowX: "auto" }}>
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            fontSize: "var(--font-size-sm)",
-          }}
-        >
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--font-size-sm)" }}>
           <thead>
             <tr style={{ background: "var(--ion-background-color)" }}>
               {["Rank", "Name", "Class", "Modul", "Point"].map((h) => (
@@ -107,8 +81,7 @@ const RankTable: React.FC<RankTableProps> = ({
                 key={p.rank}
                 style={{ borderBottom: "1px solid var(--border-color)" }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background =
-                    "var(--ion-background-color)";
+                  e.currentTarget.style.background = "var(--ion-background-color)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
@@ -133,25 +106,10 @@ const RankTable: React.FC<RankTableProps> = ({
                   </div>
                 </td>
                 {/* Name */}
-                <td
-                  style={{
-                    padding: "12px 16px",
-                    fontWeight: "600",
-                    color: "var(--ion-text-color)",
-                  }}
-                >
-                  {p.name}
-                </td>
-                {/* Class */}
-                <td
-                  style={{
-                    padding: "12px 16px",
-                    color: "var(--text-secondary)",
-                  }}
-                >
-                  {p.class}
-                </td>
-                {/* Modul */}
+                <td style={{ padding: "12px 16px", fontWeight: "600", color: "var(--ion-text-color)" }}>{p.name}</td>
+                {/* Class — shows modul value e.g. PEMROGRAMAN */}
+                <td style={{ padding: "12px 16px", color: "var(--text-secondary)" }}>{p.modul}</td>
+                {/* Modul — shows class value e.g. L1 */}
                 <td style={{ padding: "12px 16px" }}>
                   <span
                     style={{
@@ -163,19 +121,11 @@ const RankTable: React.FC<RankTableProps> = ({
                       fontWeight: "600",
                     }}
                   >
-                    {p.modul}
+                    {p.class}
                   </span>
                 </td>
                 {/* Point */}
-                <td
-                  style={{
-                    padding: "12px 16px",
-                    fontWeight: "700",
-                    color: "var(--ion-color-primary)",
-                  }}
-                >
-                  {p.point.toLocaleString()} Point
-                </td>
+                <td style={{ padding: "12px 16px", fontWeight: "700", color: "var(--ion-color-primary)" }}>{p.point.toLocaleString()} Point</td>
               </tr>
             ))}
           </tbody>
