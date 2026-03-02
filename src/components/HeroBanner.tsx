@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button";
 
 interface HeroBannerProps {
   badge?: string;
@@ -11,152 +10,118 @@ interface HeroBannerProps {
   actionLabel?: string;
 }
 
-const HeroBanner: React.FC<HeroBannerProps> = ({
-  badge = "PEMROGRAMAN",
-  title,
-  description,
-  author,
-  date,
-  onAction,
-  actionLabel = "MULAI LEARNING",
-}) => {
+const HeroBanner: React.FC<HeroBannerProps> = ({ badge = "PEMROGRAMAN", title, description, author, date, onAction, actionLabel = "MULAI LEARNING" }) => {
   return (
     <div
       style={{
         background: "var(--hero-gradient)",
         borderRadius: "var(--border-radius-lg)",
-        padding: "32px",
+        padding: "36px",
         color: "white",
         marginBottom: "var(--gap-lg)",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "flex-end",
         gap: "24px",
         position: "relative",
         overflow: "hidden",
+        minHeight: "260px",
       }}
     >
-      {/* Background decoration */}
-      <div
-        style={{
-          position: "absolute",
-          right: "-40px",
-          top: "-40px",
-          width: "200px",
-          height: "200px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "50%",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          right: "60px",
-          bottom: "-60px",
-          width: "150px",
-          height: "150px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "50%",
-        }}
-      />
-
-      {/* Left content */}
-      <div style={{ flex: 1, zIndex: 1 }}>
-        {/* Badge */}
+      <div style={{ flex: 1, zIndex: 1, display: "flex", flexDirection: "column", gap: "14px" }}>
         <span
           style={{
-            background: "rgba(255,255,255,0.2)",
-            color: "white",
-            fontSize: "10px",
+            color: "#fbbf24",
+            fontSize: "11px",
             fontWeight: "700",
-            padding: "4px 12px",
-            borderRadius: "20px",
             letterSpacing: "1.5px",
             textTransform: "uppercase",
             display: "inline-block",
-            marginBottom: "12px",
           }}
         >
           {badge}
         </span>
 
-        {/* Title */}
         <h1
           style={{
-            fontSize: "22px",
+            fontSize: "28px",
             fontWeight: "700",
             lineHeight: "1.3",
-            marginBottom: "10px",
             color: "white",
+            margin: 0,
           }}
         >
           {title}
         </h1>
 
-        {/* Description */}
         {description && (
           <p
             style={{
-              fontSize: "13px",
-              opacity: 0.85,
+              fontSize: "12px",
+              opacity: 0.75,
               lineHeight: "1.6",
-              marginBottom: "20px",
-              maxWidth: "480px",
+              margin: 0,
+              maxWidth: "360px",
             }}
           >
             {description}
           </p>
         )}
 
-        {/* Meta info */}
-        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", marginTop: "4px" }}>
           {author && (
-            <span
-              style={{
-                fontSize: "12px",
-                opacity: 0.9,
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              👤 Pemateri By {author}
+            <span style={{ fontSize: "12px", opacity: 0.9, display: "flex", alignItems: "center", gap: "6px" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              Pemateri By {author}
             </span>
           )}
           {date && (
-            <span
-              style={{
-                fontSize: "12px",
-                opacity: 0.9,
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              📅 {date}
+            <span style={{ fontSize: "12px", opacity: 0.9, display: "flex", alignItems: "center", gap: "6px" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="4" width="18" height="17" rx="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+              </svg>
+              {date}
             </span>
           )}
         </div>
       </div>
 
-      {/* Action button */}
       {onAction && (
         <div style={{ zIndex: 1, flexShrink: 0 }}>
-          <Button
-            variant="ghost"
-            size="lg"
+          <button
             onClick={onAction}
             style={{
               background: "white",
-              color: "var(--ion-color-primary)",
+              color: "#1e293b",
               border: "none",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              borderRadius: "var(--border-radius-sm)",
+              padding: "16px 32px",
+              fontSize: "15px",
               fontWeight: "700",
               letterSpacing: "0.5px",
+              cursor: "pointer",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+              fontFamily: "var(--ion-font-family)",
+              whiteSpace: "nowrap",
+              transition: "box-shadow 0.2s, transform 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.2)";
+              e.currentTarget.style.transform = "translateY(0)";
             }}
           >
             {actionLabel}
-          </Button>
+          </button>
         </div>
       )}
     </div>

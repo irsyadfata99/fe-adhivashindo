@@ -37,7 +37,6 @@ const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) 
         overflow: "hidden",
       }}
     >
-      {/* Header */}
       <div
         style={{
           padding: "16px 20px",
@@ -51,7 +50,6 @@ const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) 
         <span style={{ fontSize: "var(--font-size-xs)", color: "var(--ion-color-primary)", fontWeight: "600", cursor: "pointer" }}>Lihat Semua →</span>
       </div>
 
-      {/* Table */}
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--font-size-sm)" }}>
           <thead>
@@ -87,7 +85,6 @@ const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) 
                   e.currentTarget.style.background = "transparent";
                 }}
               >
-                {/* Rank */}
                 <td style={{ padding: "12px 16px" }}>
                   <div
                     style={{
@@ -105,11 +102,8 @@ const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) 
                     {rankEmoji(p.rank)}
                   </div>
                 </td>
-                {/* Name */}
                 <td style={{ padding: "12px 16px", fontWeight: "600", color: "var(--ion-text-color)" }}>{p.name}</td>
-                {/* Class — shows modul value e.g. PEMROGRAMAN */}
                 <td style={{ padding: "12px 16px", color: "var(--text-secondary)" }}>{p.modul}</td>
-                {/* Modul — shows class value e.g. L1 */}
                 <td style={{ padding: "12px 16px" }}>
                   <span
                     style={{
@@ -124,7 +118,6 @@ const RankTable: React.FC<RankTableProps> = ({ data, title = "Nilai Peserta" }) 
                     {p.class}
                   </span>
                 </td>
-                {/* Point */}
                 <td style={{ padding: "12px 16px", fontWeight: "700", color: "var(--ion-color-primary)" }}>{p.point.toLocaleString()} Point</td>
               </tr>
             ))}

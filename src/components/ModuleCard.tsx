@@ -47,7 +47,6 @@ const ModuleCard: React.FC<ModulCardProps> = ({ variant = "pemrograman", label, 
         }
       }}
     >
-      {/* ── Top: inner rounded card with margin ── */}
       <div style={{ padding: "12px 12px 0 12px" }}>
         <div
           style={{
@@ -61,7 +60,6 @@ const ModuleCard: React.FC<ModulCardProps> = ({ variant = "pemrograman", label, 
             overflow: "hidden",
           }}
         >
-          {/* Label */}
           <span
             style={{
               fontSize: "16px",
@@ -81,7 +79,6 @@ const ModuleCard: React.FC<ModulCardProps> = ({ variant = "pemrograman", label, 
         </div>
       </div>
 
-      {/* ── Bottom: white content ── */}
       <div style={{ padding: "16px 16px 20px", flex: 1 }}>
         <div
           style={{

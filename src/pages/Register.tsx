@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { IonPage, IonContent } from "@ionic/react";
+import { IonPage, IonContent, IonText, IonSpinner } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import { registerAPI } from "../services/api";
 import { useAuthStore } from "../store/authStore";
-import Button from "../components/Button";
 
 const Register: React.FC = () => {
   const [name, setName] = useState("");
@@ -70,17 +69,15 @@ const Register: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonContent fullscreen style={{ "--background": "var(--hero-gradient)" } as any}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight: "100vh",
-            background: "var(--hero-gradient)",
+            minHeight: "100%",
           }}
         >
-          {/* CARD */}
           <div
             style={{
               background: "var(--card-bg)",
@@ -92,16 +89,7 @@ const Register: React.FC = () => {
               margin: "16px",
             }}
           >
-            {/* Logo */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                marginBottom: "28px",
-                justifyContent: "center",
-              }}
-            >
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "28px", justifyContent: "center" }}>
               <div
                 style={{
                   width: "36px",
@@ -118,35 +106,16 @@ const Register: React.FC = () => {
               >
                 A
               </div>
-              <span
-                style={{
-                  fontWeight: "700",
-                  fontSize: "15px",
-                  color: "var(--ion-text-color)",
-                }}
-              >
-                adhivasindo
-              </span>
+              <span style={{ fontWeight: "700", fontSize: "15px", color: "var(--ion-text-color)" }}>adhivasindo</span>
             </div>
 
-            {/* Title */}
             <div style={{ textAlign: "center", marginBottom: "28px" }}>
-              <h2
-                style={{
-                  fontSize: "22px",
-                  fontWeight: "700",
-                  color: "var(--ion-text-color)",
-                  marginBottom: "6px",
-                }}
-              >
-                Buat Akun
-              </h2>
-              <p style={{ fontSize: "13px", color: "var(--text-secondary)" }}>
-                Daftar sekarang dan mulai belajar
-              </p>
+              <h2 style={{ fontSize: "22px", fontWeight: "700", color: "var(--ion-text-color)", marginBottom: "6px" }}>Buat Akun</h2>
+              <IonText color="medium">
+                <p style={{ fontSize: "13px" }}>Daftar sekarang dan mulai belajar</p>
+              </IonText>
             </div>
 
-            {/* Error */}
             {error && (
               <div
                 style={{
@@ -155,34 +124,27 @@ const Register: React.FC = () => {
                   borderRadius: "var(--border-radius-sm)",
                   padding: "10px 14px",
                   marginBottom: "16px",
-                  color: "var(--ion-color-danger)",
-                  fontSize: "13px",
                 }}
               >
-                ⚠️ {error}
+                <IonText color="danger">
+                  <p style={{ fontSize: "13px" }}>⚠️ {error}</p>
+                </IonText>
               </div>
             )}
 
-            {/* Name */}
             <div style={{ marginBottom: "16px" }}>
               <label style={labelStyle}>Nama Lengkap</label>
               <input
                 type="text"
-                placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onKeyDown={handleKeyDown}
                 style={inputStyle}
-                onFocus={(e) =>
-                  (e.target.style.borderColor = "var(--ion-color-primary)")
-                }
-                onBlur={(e) =>
-                  (e.target.style.borderColor = "var(--border-color)")
-                }
+                onFocus={(e) => (e.target.style.borderColor = "var(--ion-color-primary)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--border-color)")}
               />
             </div>
 
-            {/* Email */}
             <div style={{ marginBottom: "16px" }}>
               <label style={labelStyle}>Email</label>
               <input
@@ -192,32 +154,23 @@ const Register: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={handleKeyDown}
                 style={inputStyle}
-                onFocus={(e) =>
-                  (e.target.style.borderColor = "var(--ion-color-primary)")
-                }
-                onBlur={(e) =>
-                  (e.target.style.borderColor = "var(--border-color)")
-                }
+                onFocus={(e) => (e.target.style.borderColor = "var(--ion-color-primary)")}
+                onBlur={(e) => (e.target.style.borderColor = "var(--border-color)")}
               />
             </div>
 
-            {/* Password */}
             <div style={{ marginBottom: "24px" }}>
               <label style={labelStyle}>Password</label>
               <div style={{ position: "relative" }}>
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Min. 8 karakter"
+                  placeholder="Min. 6 karakter"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onKeyDown={handleKeyDown}
                   style={{ ...inputStyle, paddingRight: "44px" }}
-                  onFocus={(e) =>
-                    (e.target.style.borderColor = "var(--ion-color-primary)")
-                  }
-                  onBlur={(e) =>
-                    (e.target.style.borderColor = "var(--border-color)")
-                  }
+                  onFocus={(e) => (e.target.style.borderColor = "var(--ion-color-primary)")}
+                  onBlur={(e) => (e.target.style.borderColor = "var(--border-color)")}
                 />
                 <button
                   type="button"
@@ -238,30 +191,12 @@ const Register: React.FC = () => {
                   }}
                 >
                   {showPassword ? (
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   ) : (
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
                       <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
                       <line x1="1" y1="1" x2="23" y2="23" />
@@ -271,36 +206,38 @@ const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Button */}
-            <Button
-              fullWidth
-              size="lg"
-              loading={loading}
+            <button
+              disabled={loading}
               onClick={handleRegister}
-            >
-              Daftar Sekarang
-            </Button>
-
-            {/* Login link */}
-            <p
               style={{
-                textAlign: "center",
-                marginTop: "20px",
-                fontSize: "13px",
-                color: "var(--text-secondary)",
+                width: "100%",
+                height: "48px",
+                background: loading ? "var(--ion-color-primary-shade)" : "var(--ion-color-primary)",
+                color: "white",
+                border: "none",
+                borderRadius: "var(--border-radius-sm)",
+                fontSize: "15px",
+                fontWeight: "700",
+                cursor: loading ? "not-allowed" : "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                transition: "background 0.2s",
+                opacity: loading ? 0.8 : 1,
+                fontFamily: "var(--ion-font-family)",
               }}
             >
+              {loading ? <IonSpinner name="crescent" style={{ width: "20px", height: "20px" }} /> : "Daftar Sekarang"}
+            </button>
+
+            <p style={{ textAlign: "center", marginTop: "20px", fontSize: "13px", color: "var(--text-secondary)" }}>
               Sudah punya akun?{" "}
-              <span
-                onClick={() => history.push("/login")}
-                style={{
-                  color: "var(--ion-color-primary)",
-                  cursor: "pointer",
-                  fontWeight: "700",
-                }}
-              >
-                Masuk
-              </span>
+              <IonText color="primary">
+                <span onClick={() => history.push("/login")} style={{ cursor: "pointer", fontWeight: "700" }}>
+                  Masuk
+                </span>
+              </IonText>
             </p>
           </div>
         </div>

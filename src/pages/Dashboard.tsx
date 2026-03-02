@@ -24,7 +24,6 @@ const rankData = [{ rank: 1, name: "Parijo faiza", class: "L1", modul: "PEMROGRA
 const Dashboard: React.FC = () => {
   return (
     <PageLayout title="LEARNING MANAGEMENT SYSTEM">
-      {/* Hero Banner */}
       <HeroBanner
         badge="PEMROGRAMAN"
         title="Pemrograman Frontend Modern dengan React dan Angular"
@@ -35,7 +34,6 @@ const Dashboard: React.FC = () => {
         onAction={() => {}}
       />
 
-      {/* Modul Kompetensi */}
       <div style={{ marginBottom: "var(--gap-lg)" }}>
         <h2
           style={{
@@ -56,7 +54,6 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Rank Table */}
       <RankTable data={rankData} title="Nilai Peserta" />
     </PageLayout>
   );

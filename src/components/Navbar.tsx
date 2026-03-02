@@ -4,53 +4,20 @@ interface NavbarProps {
   title?: string;
 }
 
-const LogoIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-    <path
-      d="M20 6 C11 6, 6 13, 9 20 C12 27, 19 29, 24 24 C29 19, 26 12, 21 10 C17 8, 12 11, 13 16 C14 21, 19 23, 22 20"
-      stroke="#22c55e"
-      strokeWidth="3"
-      strokeLinecap="round"
-      fill="none"
-    />
-    <circle cx="22" cy="20" r="2.5" fill="#22c55e" />
-  </svg>
-);
-
 const IconBell = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="var(--text-secondary)"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
   </svg>
 );
 
 const IconMessage = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="var(--text-secondary)"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
   </svg>
 );
 
-const Navbar: React.FC<NavbarProps> = ({
-  title = "LEARNING MANAGEMENT SYSTEM",
-}) => {
+const Navbar: React.FC<NavbarProps> = ({ title = "LEARNING MANAGEMENT SYSTEM" }) => {
   return (
     <div
       style={{
@@ -62,7 +29,6 @@ const Navbar: React.FC<NavbarProps> = ({
         gap: "16px",
       }}
     >
-      {/* Left — Logo + Title grouped together */}
       <div
         style={{
           display: "flex",
@@ -71,7 +37,6 @@ const Navbar: React.FC<NavbarProps> = ({
           flexShrink: 0,
         }}
       >
-        <LogoIcon />
         <span
           style={{
             fontWeight: "800",
@@ -84,7 +49,6 @@ const Navbar: React.FC<NavbarProps> = ({
         </span>
       </div>
 
-      {/* Divider */}
       <div
         style={{
           width: "1px",
@@ -94,7 +58,6 @@ const Navbar: React.FC<NavbarProps> = ({
         }}
       />
 
-      {/* Title */}
       <span
         style={{
           fontWeight: "700",
@@ -107,10 +70,8 @@ const Navbar: React.FC<NavbarProps> = ({
         {title}
       </span>
 
-      {/* Spacer */}
       <div style={{ flex: 1 }} />
 
-      {/* Search */}
       <div
         style={{
           display: "flex",
@@ -123,16 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({
           flexShrink: 0,
         }}
       >
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="var(--text-muted)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
@@ -151,7 +103,6 @@ const Navbar: React.FC<NavbarProps> = ({
         />
       </div>
 
-      {/* Bell */}
       <div
         style={{
           position: "relative",
@@ -164,9 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({
           borderRadius: "8px",
           transition: "background 0.15s",
         }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.background = "var(--ion-background-color)")
-        }
+        onMouseEnter={(e) => (e.currentTarget.style.background = "var(--ion-background-color)")}
         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
       >
         <IconBell />
@@ -184,7 +133,6 @@ const Navbar: React.FC<NavbarProps> = ({
         />
       </div>
 
-      {/* Message */}
       <div
         style={{
           position: "relative",
@@ -197,9 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({
           borderRadius: "8px",
           transition: "background 0.15s",
         }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.background = "var(--ion-background-color)")
-        }
+        onMouseEnter={(e) => (e.currentTarget.style.background = "var(--ion-background-color)")}
         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
       >
         <IconMessage />

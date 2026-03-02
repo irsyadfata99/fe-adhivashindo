@@ -12,15 +12,10 @@ interface PageLayoutProps {
 
 const PROFILE_WIDTH = 304;
 
-const PageLayout: React.FC<PageLayoutProps> = ({
-  children,
-  title,
-  showProfilePanel = true,
-}) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ children, title, showProfilePanel = true }) => {
   return (
     <IonPage>
       <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
-        {/* ── Left+Center block ── */}
         <div
           style={{
             flex: 1,
@@ -30,7 +25,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             overflow: "hidden",
           }}
         >
-          {/* Navbar — spans only left+center, not profile column */}
           <div
             style={{
               flexShrink: 0,
@@ -42,9 +36,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             <Navbar title={title} />
           </div>
 
-          {/* Sidebar + Content row */}
           <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-            {/* Sidebar */}
             <div
               style={{
                 width: "var(--sidebar-width)",
@@ -58,7 +50,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
               <Sidebar />
             </div>
 
-            {/* Main scrollable content */}
             <div
               style={{
                 flex: 1,
@@ -73,7 +64,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
           </div>
         </div>
 
-        {/* ── Right: Profile column — truly full height ── */}
         {showProfilePanel && (
           <div
             style={{

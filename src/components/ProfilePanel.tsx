@@ -26,7 +26,6 @@ const HorizontalCalendar: React.FC = () => {
 
   return (
     <div style={{ background: "var(--sidebar-bg)", borderRadius: "var(--card-border-radius)", padding: "14px 10px" }}>
-      {/* Month header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
         <button
           onClick={() => {
@@ -55,7 +54,6 @@ const HorizontalCalendar: React.FC = () => {
         </button>
       </div>
 
-      {/* 7 day columns */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "4px" }}>
         {weekDays.map((d, i) => {
           const valid = d >= 1 && d <= daysInMonth;
@@ -64,7 +62,6 @@ const HorizontalCalendar: React.FC = () => {
             <div
               key={i}
               style={{
-                // OUTER BOX — solid white background
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -79,7 +76,6 @@ const HorizontalCalendar: React.FC = () => {
                 opacity: valid ? 1 : 0.3,
               }}
             >
-              {/* Day label — primary color */}
               <span
                 style={{
                   fontSize: "9px",
@@ -91,7 +87,6 @@ const HorizontalCalendar: React.FC = () => {
                 {DAYS_SHORT[i]}
               </span>
 
-              {/* INNER BOX — number */}
               <div
                 style={{
                   width: "26px",
@@ -100,7 +95,6 @@ const HorizontalCalendar: React.FC = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  // active = primary bg + white text; inactive = transparent + primary text
                   background: active ? "var(--ion-color-primary)" : "transparent",
                   transition: "background 0.15s",
                 }}
@@ -163,9 +157,7 @@ const ProfilePanel: React.FC = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      {/* ── Profile — flat ── */}
       <div style={{ paddingTop: "8px", position: "relative", textAlign: "center" }}>
-        {/* Settings */}
         <div
           style={{ position: "absolute", top: "0", right: "0", cursor: "pointer", padding: "5px", borderRadius: "8px", transition: "background 0.15s" }}
           onMouseEnter={(e) => (e.currentTarget.style.background = "var(--ion-background-color)")}
@@ -174,7 +166,6 @@ const ProfilePanel: React.FC = () => {
           <IconSettings />
         </div>
 
-        {/* Avatar */}
         <div
           style={{
             width: "72px",
@@ -195,7 +186,6 @@ const ProfilePanel: React.FC = () => {
           {initials}
         </div>
 
-        {/* Single line: SELAMAT DATANG, [NAME] */}
         <div
           style={{
             fontSize: "13px",
@@ -213,10 +203,8 @@ const ProfilePanel: React.FC = () => {
         <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>Di LMS by Adhivasindo</div>
       </div>
 
-      {/* ── Calendar ── */}
       <HorizontalCalendar />
 
-      {/* ── Jadwal Pemateri ── */}
       <div style={{ padding: "0 2px" }}>
         <div style={{ fontSize: "11px", fontWeight: "700", color: "var(--ion-text-color)", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "4px" }}>JADWAL PEMATERI</div>
         {scheduleData.map((s, i) => (
@@ -224,7 +212,6 @@ const ProfilePanel: React.FC = () => {
         ))}
       </div>
 
-      {/* ── Promo Banner ── */}
       <div style={{ borderRadius: "var(--card-border-radius)", overflow: "hidden", lineHeight: "0" }}>
         <img
           src="https://placehold.co/272x140/0f172a/22d3ee?text=TECHNOLOGY"
